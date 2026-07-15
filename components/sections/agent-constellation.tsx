@@ -23,7 +23,7 @@ const ROLES: Role[] = [
   {
     id: "orchestrator",
     name: "총괄",
-    short: "Orchestrator",
+    short: "총괄",
     perspective: "전체 계산·평가 흐름을 조율하고 각 에이전트 결과를 모은다.",
     reads: ["candidate_id", "role", "is_control"],
     gate: false,
@@ -31,7 +31,7 @@ const ROLES: Role[] = [
   {
     id: "hypothesis",
     name: "가설 정리",
-    short: "Hypothesis",
+    short: "가설",
     perspective: "실험 목적을 검증 가능한 가설로 정리한다.",
     reads: ["role", "charge"],
     gate: false,
@@ -39,7 +39,7 @@ const ROLES: Role[] = [
   {
     id: "candidate",
     name: "후보 물질",
-    short: "Candidate",
+    short: "후보",
     perspective: "후보의 역할과 실험 적합성을 살핀다.",
     reads: ["candidate_id", "role", "charge"],
     gate: false,
@@ -47,7 +47,7 @@ const ROLES: Role[] = [
   {
     id: "electrostatic",
     name: "정전기 상호작용",
-    short: "Electrostatic",
+    short: "정전기",
     perspective:
       "부분전하·쌍극자를 근거로 정전기 상호작용 가능성을 본다. 이 사례에서는 가중치가 최대다.",
     reads: ["max_positive_charge", "max_negative_charge", "dipole_moment"],
@@ -56,7 +56,7 @@ const ROLES: Role[] = [
   {
     id: "noncovalent",
     name: "비공유 상호작용",
-    short: "Non-covalent",
+    short: "비공유",
     perspective: "분산력 등 약한 비공유 상호작용 경향을 살핀다.",
     reads: ["dipole_moment", "total_energy"],
     gate: false,
@@ -64,7 +64,7 @@ const ROLES: Role[] = [
   {
     id: "stability",
     name: "구조 안정성",
-    short: "Stability",
+    short: "안정성",
     perspective: "구조 수렴 여부와 상대 안정성을 판정한다.",
     reads: ["geometry_converged", "total_energy"],
     gate: true,
@@ -72,7 +72,7 @@ const ROLES: Role[] = [
   {
     id: "safety",
     name: "안전성",
-    short: "Safety",
+    short: "안전",
     perspective:
       "실험 전 1차 안전성을 검토한다. 실제 실험에는 SDS·교사/전문가 검토가 필요하다.",
     reads: ["role", "charge"],
@@ -81,7 +81,7 @@ const ROLES: Role[] = [
   {
     id: "variables",
     name: "변인 통제",
-    short: "Variables",
+    short: "변인",
     perspective: "독립·종속·통제 변인을 정리한다.",
     reads: ["is_control", "role"],
     gate: false,
@@ -89,7 +89,7 @@ const ROLES: Role[] = [
   {
     id: "critic",
     name: "비판 검토",
-    short: "Critic",
+    short: "비판",
     perspective: "근거 부족·과잉 해석·방법론적 한계를 지적한다.",
     reads: ["geometry_converged", "raw_log_path"],
     gate: true,
@@ -115,7 +115,7 @@ export default function AgentConstellation() {
   return (
     <GridPanel id="agents">
       <SectionHeading
-        eyebrow="Agent Constellation"
+        eyebrow="에이전트 구성"
         title="9개 에이전트가 하나의 Evidence JSON을 함께 읽는다"
       >
         모든 에이전트는 <span className="text-data">같은 xTB 결과 JSON</span>을 입력으로 받고,
@@ -230,8 +230,8 @@ export default function AgentConstellation() {
                         transform="rotate(45 6 6)"
                       />
                     </svg>
-                    gate
-                  </span>
+                  게이트
+                </span>
                 ) : null}
               </motion.button>
             );
@@ -244,7 +244,7 @@ export default function AgentConstellation() {
         <div className="col-span-2 mb-1 flex flex-col items-center rounded-xl border border-data/60 bg-data/10 px-4 py-3 text-center">
           <span className="font-mono text-xs text-data">Evidence JSON</span>
           <span className="font-mono text-[10px] text-muted-foreground">
-            9개 에이전트 공통 입력 · single source
+            9개 에이전트 공통 입력 · 단일 출처
           </span>
         </div>
         {ROLES.map((r) => {
@@ -267,7 +267,7 @@ export default function AgentConstellation() {
               </span>
               {r.gate ? (
                 <span className="mt-1 rounded-full border border-exclude/50 bg-exclude/10 px-1.5 text-[9px] font-mono uppercase text-exclude">
-                  gate
+                  게이트
                 </span>
               ) : null}
             </button>
@@ -293,7 +293,7 @@ export default function AgentConstellation() {
               </span>
               {activeRole.gate ? (
                 <span className="inline-flex items-center gap-1 rounded-full border border-exclude/50 bg-exclude/10 px-2 py-0.5 text-[10px] font-mono uppercase text-exclude">
-                  Safety Gate 연결
+                  안전 게이트 연결
                 </span>
               ) : null}
             </div>

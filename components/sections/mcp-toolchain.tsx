@@ -58,7 +58,7 @@ const line = {
 export default function McpToolchain() {
   return (
     <GridPanel id="mcp">
-      <SectionHeading eyebrow="MCP Toolchain" title="6개의 MCP 도구가 순서대로 동작한다">
+      <SectionHeading eyebrow="MCP 도구 체인" title="6개의 MCP 도구가 순서대로 동작한다">
         MCP는 “도구 계약”을 지키는 진입점입니다. 각 도구는 정해진 입력을 받아 정해진 결과만
         내보내고, 핵심 판단은 규칙 기반 평가 단계에서 이뤄집니다.
       </SectionHeading>

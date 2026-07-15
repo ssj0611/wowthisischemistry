@@ -33,8 +33,8 @@ export default function CaseStudy() {
   return (
     <GridPanel id="case-study">
       <SectionHeading
-        eyebrow="Case Study"
-        title="풍화 미세플라스틱 제거 필터 활성층 선별"
+        eyebrow="적용 사례"
+        title="적용사례: 풍화 미세플라스틱 제거 필터 활성층 선별"
       >
         풍화된 미세플라스틱 표면은{" "}
         <span className="text-foreground">조건에 따라 음전하 또는 극성을 띨 수 있다는 가설</span>에서
@@ -122,7 +122,7 @@ export default function CaseStudy() {
                 <span className="text-foreground">{c.name}</span>
                 <p className="mt-0.5 text-xs text-muted-foreground">{c.role}</p>
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-wide text-muted-foreground">
-                  control · 추천 집합 제외
+                  대조군 · 추천 집합 제외
                 </p>
               </li>
             ))}

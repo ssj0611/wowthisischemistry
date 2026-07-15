@@ -30,21 +30,21 @@ export default function HeroTextOverlay() {
         variants={item}
         className="text-accent mb-3 font-mono text-[11px] tracking-[0.25em] md:text-xs"
       >
-        xTB LAB HARNESS · EVIDENCE-FIRST CHEMISTRY
+        xTB LAB HARNESS · 근거 우선 화학
       </motion.p>
 
       <motion.p
         variants={item}
         aria-hidden
-        className="mb-3.5 text-6xl font-bold tracking-wider md:text-7xl lg:text-8xl"
+        className="mb-3.5 text-4xl font-bold tracking-wide md:text-6xl lg:text-7xl"
         style={{
           fontFamily: "var(--font-montserrat)",
           color: "rgb(0, 0, 0)",
-          WebkitTextStroke: "5px white",
+          WebkitTextStroke: "4px white",
           paintOrder: "stroke fill",
         }}
       >
-        JACK
+        SEOJIN
       </motion.p>
 
       <motion.h1
@@ -61,7 +61,7 @@ export default function HeroTextOverlay() {
         className="text-muted-foreground mb-6 max-w-xs break-keep font-mono text-xs leading-relaxed md:text-sm"
       >
         xTB 계산으로 정량 근거를 만들고, 구조화된 JSON을 역할별 에이전트가
-        검토해 실험 설계 보고서로 정리합니다. 마스코트 Jack이 안내합니다.
+        검토해 실험 설계 보고서로 정리합니다.
       </motion.p>
 
       <motion.div variants={item} className="flex flex-wrap gap-3">

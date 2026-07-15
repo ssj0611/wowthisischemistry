@@ -4,32 +4,32 @@ import { motion, useReducedMotion } from "motion/react";
 
 const FIELDS = [
   {
-    label: "Total Energy",
+    label: "총 에너지",
     key: "total_energy",
     proxy: "분자의 총 에너지. 같은 조성의 구조들 사이에서 상대 안정성을 비교하는 근거로 쓴다.",
     limit: "한계: 조성이 다른 분자 간에는 단순 비교할 수 없다.",
   },
   {
-    label: "Partial Charge Extremes",
+    label: "부분전하 극값",
     key: "max_positive_charge · max_negative_charge",
     proxy:
       "원자별 부분전하의 극값(가장 양수·가장 음수). 정전기 상호작용 가능성의 대리 지표로 쓴다.",
     limit: "한계: 분자 순전하가 아니며, 실제 결합력을 뜻하지 않는다.",
   },
   {
-    label: "Dipole Moment",
+    label: "쌍극자 모멘트",
     key: "dipole_moment",
     proxy: "분자 전체의 극성. 극성 표면·용매와의 상호작용 가능성을 가늠하는 대리 지표.",
     limit: "한계: 실제 여과 효율이나 흡착 세기의 예측값이 아니다.",
   },
   {
-    label: "Optimization Convergence",
+    label: "구조 최적화 수렴",
     key: "geometry_converged",
     proxy: "구조 최적화 수렴 여부. 계산 결과 전체를 신뢰할 수 있는지 판단하는 관문.",
     limit: "한계: 수렴 실패 시 다른 모든 수치는 근거로 쓰지 않는다.",
   },
   {
-    label: "Raw Log Traceability",
+    label: "원시 로그 추적",
     key: "raw_log_path",
     proxy: "원시 로그 보관 경로. 모든 수치를 원본 계산까지 거슬러 감사·재현할 수 있게 한다.",
     limit: "한계: 경로 기록일 뿐, 로그 원문을 LLM 해석에 쓰지 않는다.",
@@ -42,12 +42,12 @@ export default function EvidenceSchema() {
   return (
     <section id="evidence" className="py-24">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
-        <p className="font-mono text-xs tracking-[0.3em] text-accent">EVIDENCE SCHEMA</p>
+        <p className="font-mono text-xs tracking-[0.3em] text-accent">Evidence 스키마</p>
         <h2
           className="mt-2 text-3xl font-semibold text-foreground md:text-4xl"
           style={{ fontFamily: "var(--font-montserrat)" }}
         >
-          What the JSON Actually Holds
+          JSON이 실제로 담는 것
         </h2>
         <p className="mt-3 max-w-2xl break-keep font-mono text-sm leading-relaxed text-muted-foreground">
           평가의 중심이 되는 다섯 필드. 각각은 실측이 아니라 초기 선별을 위한 대리 지표이며, 그 한계를

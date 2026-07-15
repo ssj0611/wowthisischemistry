@@ -50,12 +50,12 @@ export default function LogToJson() {
   return (
     <section id="evidence-log" className="py-24">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
-        <p className="font-mono text-xs tracking-[0.3em] text-accent">LOG → JSON</p>
+        <p className="font-mono text-xs tracking-[0.3em] text-accent">로그 → JSON</p>
         <h2
           className="mt-2 text-3xl font-semibold text-foreground md:text-4xl"
           style={{ fontFamily: "var(--font-montserrat)" }}
         >
-          Raw Log to Evidence JSON
+          원시 로그에서 Evidence JSON으로
         </h2>
         <p className="mt-3 max-w-2xl break-keep font-mono text-sm leading-relaxed text-muted-foreground">
           긴 비정형 xTB 로그에서 파서가 필요한 필드만 추출해 엄격한 JSON으로 구조화한다. 로그

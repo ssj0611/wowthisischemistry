@@ -27,7 +27,7 @@ export default function Footer() {
               className="text-foreground text-4xl md:text-5xl mb-8 leading-[3.5rem] md:leading-[4rem] font-semibold text-center md:text-left mt-0"
               style={{ fontFamily: "var(--font-montserrat)" }}
             >
-              Evidence over Guesswork.
+              근거가 추측을 이긴다.
             </h2>
 
             <div className="space-y-4 text-foreground">

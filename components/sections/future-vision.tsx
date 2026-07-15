@@ -25,7 +25,7 @@ const IDEAS = [
 export default function FutureVision() {
   return (
     <GridPanel id="future">
-      <SectionHeading eyebrow="Future" title="다음으로 넓혀갈 방향">
+      <SectionHeading eyebrow="다음 방향" title="다음으로 넓혀갈 방향">
         핵심 원칙(수치의 단일 출처는 파서 JSON, 제외 우선)을 유지한 채, 도구를 더 넓은 실험으로
         확장하는 것을 목표로 합니다.
       </SectionHeading>

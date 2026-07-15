@@ -1,15 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const LINKS = [
-  { id: "overview", label: "Overview" },
-  { id: "pipeline", label: "Pipeline" },
-  { id: "evidence", label: "Evidence" },
-  { id: "agents", label: "Agents" },
-  { id: "case-study", label: "Case Study" },
-  { id: "limitations", label: "Limitations" },
+  { id: "overview", label: "개요" },
+  { id: "pipeline", label: "파이프라인" },
+  { id: "evidence", label: "근거" },
+  { id: "agents", label: "에이전트" },
+  { id: "case-study", label: "사례" },
+  { id: "limitations", label: "한계" },
 ];
 
 export default function Header() {
@@ -57,13 +56,24 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-sm">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
-        <Image
-          src="/logo.svg"
-          alt="xTB Lab Harness"
-          width={100}
-          height={32}
-          className="h-auto"
-        />
+        <a
+          href="#overview"
+          className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+        >
+          <span
+            aria-hidden
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-primary-foreground"
+            style={{ fontFamily: "var(--font-montserrat)" }}
+          >
+            W
+          </span>
+          <span
+            className="text-sm font-bold tracking-wide text-foreground md:text-[15px]"
+            style={{ fontFamily: "var(--font-montserrat)" }}
+          >
+            Wowthisischemistry
+          </span>
+        </a>
 
         <nav aria-label="주요 섹션" className="hidden items-center gap-6 md:flex">
           {LINKS.map(({ id, label }) => (

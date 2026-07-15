@@ -5,21 +5,21 @@ import { motion } from "motion/react";
 const PROBLEMS = [
   {
     tag: "P-01",
-    label: "NO COMMON RULER",
+    label: "공통 기준 부재",
     color: "text-data",
     title: "후보는 많고, 기준은 제각각",
     body: "실험 후보 물질이 많아질수록 동일한 기준으로 비교하고 순위화하기 어렵습니다. 후보마다 참고한 문헌과 조건이 달라, 공정한 비교 자체가 성립하지 않습니다.",
   },
   {
     tag: "P-02",
-    label: "MOLECULAR SCALE",
+    label: "분자 규모",
     color: "text-caution",
     title: "직관·문헌만으로는 분자 수준 판단이 어렵다",
     body: "표면 화학·흡착·여과처럼 전하·극성·안정성이 결과를 좌우하는 실험에서는, 직관과 문헌 요약만으로 분자 수준의 차이를 가려내기 어렵고 정량 근거가 필요합니다.",
   },
   {
     tag: "P-03",
-    label: "UNGROUNDED OUTPUT",
+    label: "근거 없는 출력",
     color: "text-exclude",
     title: "LLM 단독 추천은 근거 확인이 어렵다",
     body: "LLM만으로 후보를 추천하면 존재하지 않는 물질이나 근거 없는 수치를 그럴듯하게 생성할 위험이 있습니다. 문제는 능력이 아니라, 판단의 근거를 확인할 수 없다는 점입니다.",
@@ -40,7 +40,7 @@ export default function Problem() {
     <section id="problem" className="scroll-mt-24 py-20 md:py-28">
       <div className="mx-auto max-w-[1200px]">
         <p className="text-accent mb-3 font-mono text-xs tracking-[0.25em]">
-          PROBLEM
+          문제
         </p>
         <h2
           className="mb-4 max-w-2xl break-keep text-3xl font-bold text-foreground md:text-4xl"

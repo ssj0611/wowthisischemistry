@@ -21,7 +21,7 @@ export default function ReportPreview() {
   return (
     <GridPanel id="report">
       <SectionHeading
-        eyebrow="Experiment Report"
+        eyebrow="실험 설계 보고서"
         title="평가 결과가 실험 설계 보고서로 정리된다"
       >
         <code className="font-mono">generate_experiment_report</code>는 규칙 평가 결과를 그대로
@@ -131,7 +131,7 @@ export default function ReportPreview() {
                   <StatusBadge status={r.status} />
                 ) : (
                   <span className="inline-flex items-center rounded-full border border-border bg-background/60 px-2.5 py-0.5 font-mono text-xs uppercase tracking-wide text-muted-foreground">
-                    control · 비교 기준
+                    대조군 · 비교 기준
                   </span>
                 )}
               </li>
@@ -142,7 +142,7 @@ export default function ReportPreview() {
         <section className="mt-5 rounded-lg border border-review/40 bg-review/5 p-3">
           <div className="flex items-center gap-2">
             <span className="rounded border border-review/50 px-1.5 py-0.5 font-mono text-[9px] uppercase text-review">
-              optional
+              선택
             </span>
             <h4 className="font-mono text-xs uppercase tracking-wide text-review">
               Gemini 서술 보강

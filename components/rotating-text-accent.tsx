@@ -1,7 +1,7 @@
 "use client";
 
 export default function RotatingTextAccent() {
-  const text = "· XTB · EVIDENCE FIRST · CALCULATE FIRST · INTERPRET SECOND ";
+  const text = "· XTB · 근거 우선 · 먼저 계산 · 그다음 해석 ";
 
   return (
     <div
@@ -10,12 +10,12 @@ export default function RotatingTextAccent() {
     >
       <div className="relative w-full h-full">
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/circular-logo.svg"
-            alt=""
-            className="w-12 h-12 md:w-16 md:h-16"
-          />
+          <span
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-extrabold text-primary-foreground md:h-16 md:w-16 md:text-2xl"
+            style={{ fontFamily: "var(--font-montserrat)" }}
+          >
+            W
+          </span>
         </div>
 
         <div className="absolute inset-0 animate-spin-slow">

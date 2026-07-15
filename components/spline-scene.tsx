@@ -12,8 +12,8 @@ export default function SplineScene() {
       {isLoading && (
         <div className="absolute inset-0 w-full h-full flex items-center justify-center">
           <div className="text-foreground text-center">
-            <div className="text-lg mb-2">Loading 3D Scene...</div>
-            <div className="text-sm opacity-70">Please wait</div>
+            <div className="text-lg mb-2">3D 장면 불러오는 중...</div>
+            <div className="text-sm opacity-70">잠시만 기다려 주세요</div>
           </div>
         </div>
       )}
@@ -21,8 +21,8 @@ export default function SplineScene() {
       {hasError && (
         <div className="absolute inset-0 w-full h-full flex items-center justify-center">
           <div className="text-foreground text-center">
-            <div className="text-lg mb-2">3D Scene Unavailable</div>
-            <div className="text-sm opacity-70">Unable to load the 3D model</div>
+            <div className="text-lg mb-2">3D 장면을 불러올 수 없습니다</div>
+            <div className="text-sm opacity-70">모델을 표시하지 못했습니다</div>
           </div>
         </div>
       )}

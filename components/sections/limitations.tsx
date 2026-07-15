@@ -26,7 +26,7 @@ const LIMITS = [
 export default function Limitations() {
   return (
     <GridPanel id="limitations">
-      <SectionHeading eyebrow="Limitations" title="이 시스템이 하지 않는 것">
+      <SectionHeading eyebrow="한계" title="시스템 사용시 주의사항">
         정직하게 밝히는 것이 신뢰의 출발점입니다. 아래는 결과를 읽을 때 반드시 함께 기억해야 할
         경계입니다.
       </SectionHeading>

@@ -8,7 +8,7 @@ const OUR_FLOW = [
   { label: "구조 입력", note: ".xyz" },
   { label: "xTB 계산", note: "GFN2-xTB" },
   { label: "JSON 근거", note: "SSOT" },
-  { label: "역할별 검토", note: "rule-based agents" },
+  { label: "역할별 검토", note: "규칙 기반 에이전트" },
   { label: "보고서", note: "report" },
 ];
 
@@ -35,15 +35,15 @@ export default function CorePrinciple() {
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-14 text-center">
           <p className="text-accent mb-4 font-mono text-xs tracking-[0.25em]">
-            CORE PRINCIPLE
+            핵심 원칙
           </p>
           <h2
             className="text-foreground mx-auto mb-4 max-w-3xl text-4xl font-bold md:text-5xl"
             style={{ fontFamily: "var(--font-montserrat)" }}
           >
-            Calculate first.
+            먼저 계산하고,
             <br />
-            Interpret second.
+            그다음에 해석한다.
           </h2>
           <p className="text-muted-foreground mx-auto max-w-xl break-keep font-mono text-sm leading-relaxed">
             추천보다 먼저, 계산 가능한 근거를 만듭니다. 수치와 순위의 출처는

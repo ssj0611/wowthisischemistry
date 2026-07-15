@@ -6,9 +6,9 @@ import { GridPanel, SectionHeading, StatusBadge, type Status } from "./_shared";
 
 // 하드 제외 규칙에 해당하는 3개 게이트 역할 (docs/03-multi-agents.md).
 const GATE_ROLES = [
-  { id: "stability", name: "구조 안정성", short: "Stability" },
-  { id: "safety", name: "안전성", short: "Safety" },
-  { id: "critic", name: "비판 검토", short: "Critic" },
+  { id: "stability", name: "구조 안정성", short: "안정성" },
+  { id: "safety", name: "안전성", short: "안전" },
+  { id: "critic", name: "비판 검토", short: "비판" },
 ] as const;
 
 const CYCLE: Status[] = ["include", "caution", "exclude"];
@@ -30,7 +30,7 @@ export default function SafetyGate() {
 
   return (
     <GridPanel id="safety-gate">
-      <SectionHeading eyebrow="Safety Gate" title="하드 제외 규칙: 하나라도 exclude면 탈락">
+      <SectionHeading eyebrow="안전 게이트" title="하드 제외 규칙: 하나라도 exclude면 탈락">
         구조 안정성 · 안전성 · 비판 검토(Critic) 세 역할은 <span className="text-exclude">거부권</span>을
         가집니다. 이 중 하나라도 <code className="font-mono">exclude</code>이면 다른 점수가 아무리 높아도
         최종 추천에서 제외됩니다. 아래 상태 칩을 눌러 규칙이 어떻게 작동하는지 확인해 보세요.
@@ -52,12 +52,12 @@ export default function SafetyGate() {
                 </p>
               </div>
               <span className="rounded-full border border-exclude/50 bg-exclude/10 px-2 py-0.5 text-[9px] font-mono uppercase text-exclude">
-                gate
+                게이트
               </span>
             </div>
             <StatusBadge status={states[r.id]} />
             <span className="font-mono text-[10px] text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
-              click to cycle
+              클릭하여 상태 변경
             </span>
           </button>
         ))}

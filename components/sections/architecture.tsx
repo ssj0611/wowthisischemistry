@@ -44,10 +44,10 @@ type Stage = {
 const STAGES: Stage[] = [
   {
     id: "input",
-    en: ".xyz Input",
+    en: ".xyz 입력",
     role: "사전 준비된 3D 좌표 입력",
     desc: "후보 물질의 3D 좌표(.xyz)와 메타 정보(역할·전하·대조군 여부)를 입력한다. SMILES 자동 변환 없이 사전에 준비된 구조만 사용한다.",
-    chips: [".xyz", "role · charge", "is_control"],
+    chips: [".xyz", "역할 · 전하", "대조군 여부"],
     tone: "data",
   },
   {
@@ -55,15 +55,15 @@ const STAGES: Stage[] = [
     en: "xTB / GFN2-xTB",
     role: "구조 최적화 포함 계산 실행",
     desc: "GFN2-xTB로 구조 최적화를 포함한 계산을 실행하고, 원시 로그와 그 보관 경로를 기록한다. 이 단계는 계산만 하며 추천 판단은 하지 않는다.",
-    chips: ["GFN2-xTB", "geometry opt", "raw log"],
+    chips: ["GFN2-xTB", "구조 최적화", "원시 로그"],
     tone: "data",
   },
   {
     id: "parser",
-    en: "Log Parser",
+    en: "로그 파서",
     role: "원시 로그에서 필요 수치만 추출",
     desc: "비정형 로그에서 총 에너지, 원자별 부분전하의 극값, 쌍극자 모멘트, 수렴 여부만 추출해 구조화한다. 자연어 해석은 하지 않는다.",
-    chips: ["raw log in", "extract fields", "JSON out"],
+    chips: ["원시 로그 입력", "필드 추출", "JSON 출력"],
     tone: "data",
   },
   {
@@ -81,18 +81,18 @@ const STAGES: Stage[] = [
   },
   {
     id: "review",
-    en: "Multi-Layer Review",
+    en: "다중 계층 검토",
     role: "규칙 기반 멀티에이전트 검토",
     desc: "동일한 JSON을 역할별 에이전트와 Critic이 규칙 기반으로 평가한다. JSON에 없는 수치는 발명하지 않으며, API 키 없이도 동작한다.",
-    chips: ["rule-based agents", "critic", "no invented numbers"],
+    chips: ["규칙 기반 에이전트", "비판 검토", "수치 발명 금지"],
     tone: "review",
   },
   {
     id: "report",
-    en: "Decision Report",
+    en: "결정 보고서",
     role: "가중치 점수와 제외 규칙으로 결정",
     desc: "가중치 합산과 제외 규칙으로 include / caution / exclude를 결정해 실험 설계 보고서를 만든다. Gemini 등 LLM은 문장 서술 보강에만 선택적으로 쓰인다.",
-    chips: ["weighted score", "include · caution · exclude", "LLM: optional prose"],
+    chips: ["가중치 점수", "include · caution · exclude", "LLM: 선택적 서술"],
     tone: "include",
   },
 ];
@@ -237,12 +237,12 @@ export default function Architecture() {
 
   const header = (
     <div className="mx-auto max-w-[1200px] px-4 md:px-6">
-      <p className="font-mono text-xs tracking-[0.3em] text-accent">PIPELINE</p>
+      <p className="font-mono text-xs tracking-[0.3em] text-accent">파이프라인</p>
       <h2
         className="mt-2 text-3xl font-semibold text-foreground md:text-4xl"
         style={{ fontFamily: "var(--font-montserrat)" }}
       >
-        System Architecture
+        계산부터 판단까지, 한 흐름으로
       </h2>
       <p className="mt-3 max-w-2xl break-keep font-mono text-sm leading-relaxed text-muted-foreground">
         .xyz 입력부터 결정 보고서까지, 계산과 해석을 분리한 6단계 파이프라인. 모든 수치는 파서가 만든
