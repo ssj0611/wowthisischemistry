@@ -1,0 +1,22 @@
+---
+description: wowthisischemistry 도메인·설계 불변조건. 기능 구현 전 docs를 따른다.
+alwaysApply: true
+---
+
+# Project context for agents
+
+이 저장소는 **xTB 계산 + 멀티에이전트 검증 기반 실험 후보 물질 추천 시스템**의 홍보/웹과 관련 문서를 포함한다.
+
+## 구현 전 必독
+
+- `docs/README.md` → 이어서 `docs/00-overview.md`
+- 도메인 상세: `docs/01-architecture.md`, `docs/02-pipeline-and-mcp.md`, `docs/03-multi-agents.md`
+- 원본 소감문 마크다운: `docs/sources/xtb-소감문.md`
+
+## 절대 어기지 말 것
+
+1. 수치·순위·제외 판단의 SSOT는 **파서가 만든 xTB JSON**이다.
+2. LLM은 보고서 서술 보조만 한다. API 없이도 핵심 평가가 동작해야 한다.
+3. 구조 안정성 / 안전성 / Critic 중 `exclude` 하나면 최종 추천 제외.
+4. xTB는 실측 여과 효율 예측기가 아니라 **대리 구조 초기 선별**이다 — UI/문서에 명시.
+5. Next.js 16 API는 학습 데이터와 다를 수 있음 → `node_modules/next/dist/docs/` 확인.
