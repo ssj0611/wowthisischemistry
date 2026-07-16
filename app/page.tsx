@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SplineScene from "@/components/spline-scene";
 import Header from "@/components/header";
 import RotatingTextAccent from "@/components/rotating-text-accent";
@@ -31,73 +30,14 @@ export default function Home() {
         <main id="overview" className="scroll-mt-24">
           <section
             aria-label="소개"
-            className="w-full relative h-[600px]"
+            className="w-full relative h-[480px] md:h-[520px]"
           >
             <SplineScene />
             <HeroTextOverlay />
             <RotatingTextAccent />
           </section>
 
-          <section
-            aria-label="가이드 캐릭터 Jack"
-            className="relative rounded-4xl py-7 mx-4 md:mx-0 w-[calc(100%-2rem)] md:w-full bg-card border border-solid border-border pb-20"
-            style={{
-              backgroundImage: `
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px)
-              `,
-              backgroundSize: "40px 40px",
-            }}
-          >
-            <div className="absolute top-8 left-8 text-foreground opacity-50 text-5xl font-extralight font-sans leading-[0rem]">
-              +
-            </div>
-            <div className="absolute top-8 right-8 text-foreground opacity-50 text-5xl font-sans leading-[0] font-extralight">
-              +
-            </div>
-            <div className="absolute bottom-8 left-8 text-foreground opacity-50 text-5xl font-sans font-extralight">
-              +
-            </div>
-            <div className="absolute bottom-8 right-8 text-foreground opacity-50 text-5xl font-sans font-extralight">
-              +
-            </div>
-
-            <div className="px-6 md:px-40">
-              <div className="flex items-center justify-center md:gap-11">
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/jack-front.png"
-                    alt="가이드 캐릭터 Jack 정면"
-                    width={224}
-                    height={224}
-                    className="w-48 h-48 md:w-56 md:h-56 object-contain"
-                  />
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/jack-side.png"
-                    alt="가이드 캐릭터 Jack 측면"
-                    width={224}
-                    height={224}
-                    className="w-48 h-48 md:w-56 md:h-56 object-contain"
-                  />
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <Image
-                    src="/jack-back.png"
-                    alt="가이드 캐릭터 Jack 후면"
-                    width={224}
-                    height={224}
-                    className="w-48 h-48 md:w-56 md:h-56 object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="flex flex-col gap-6 md:gap-10 px-4 md:px-0 mt-10">
+          <div className="flex flex-col gap-6 md:gap-10 px-4 md:px-0">
             <Problem />
             <CorePrinciple />
             <Architecture />

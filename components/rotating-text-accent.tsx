@@ -6,7 +6,7 @@ export default function RotatingTextAccent() {
   return (
     <div
       aria-hidden
-      className="absolute bottom-20 right-8 w-24 h-24 md:w-32 md:h-32"
+      className="absolute bottom-6 right-8 w-24 h-24 md:w-32 md:h-32"
     >
       <div className="relative w-full h-full">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -26,7 +26,7 @@ export default function RotatingTextAccent() {
                 d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
               />
             </defs>
-            <text className="text-xs fill-white font-medium">
+            <text className="fill-foreground text-xs font-medium" style={{ fill: "#111111" }}>
               <textPath href="#circle" startOffset="0%">
                 {text}
               </textPath>

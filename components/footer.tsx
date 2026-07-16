@@ -55,11 +55,12 @@ export default function Footer() {
           <div className="hidden md:flex flex-1 justify-end items-center relative">
             <div className="relative">
               <Image
-                src="/jack-footer-ufo-new.png"
+                src="/jack-footer-ufo.png"
                 alt="Jack in UFO"
                 width={400}
                 height={300}
                 className="object-contain mb-0 mt-4"
+                unoptimized
               />
             </div>
           </div>
@@ -68,11 +69,12 @@ export default function Footer() {
         <div className="md:hidden flex justify-center mt-12">
           <div className="relative">
             <Image
-              src="/jack-footer-ufo-new.png"
+              src="/jack-footer-ufo.png"
               alt="Jack in UFO"
               width={500}
               height={375}
               className="object-contain"
+              unoptimized
             />
           </div>
         </div>

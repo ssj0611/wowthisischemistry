@@ -1,8 +1,7 @@
 <svg width="103" height="102" viewBox="0 0 103 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="51.08" cy="51.4657" r="50.497" fill="#1DED83"/>
-  <!-- W as paths so it renders in <img> without font dependency -->
+  <circle cx="51.08" cy="51.4657" r="50.497" fill="#1a0ff7"/>
   <path
     d="M24 32 L35.5 72 L51.08 42 L66.5 72 L78 32 L68.5 32 L59.5 58 L51.08 42 L42.5 58 L33.5 32 Z"
-    fill="#000000"
+    fill="#FFFFFF"
   />
 </svg>

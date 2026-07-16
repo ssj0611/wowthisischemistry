@@ -37,7 +37,7 @@ const card = {
 
 export default function Problem() {
   return (
-    <section id="problem" className="scroll-mt-24 py-20 md:py-28">
+    <section id="problem" className="scroll-mt-24 pt-6 pb-14 md:pt-8 md:pb-16">
       <div className="mx-auto max-w-[1200px]">
         <p className="text-accent mb-3 font-mono text-xs tracking-[0.25em]">
           문제

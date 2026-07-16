@@ -8,44 +8,57 @@ export default function SplineScene() {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="absolute inset-0 w-full h-full bg-background">
+    <div className="absolute inset-0 h-full w-full overflow-hidden bg-white">
       {isLoading && (
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-          <div className="text-foreground text-center">
-            <div className="text-lg mb-2">3D 장면 불러오는 중...</div>
+        <div className="absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-white">
+          <div className="text-center text-[#111111]">
+            <div className="mb-2 text-lg">3D 장면 불러오는 중...</div>
             <div className="text-sm opacity-70">잠시만 기다려 주세요</div>
           </div>
         </div>
       )}
 
       {hasError && (
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-          <div className="text-foreground text-center">
-            <div className="text-lg mb-2">3D 장면을 불러올 수 없습니다</div>
-            <div className="text-sm opacity-70">모델을 표시하지 못했습니다</div>
-          </div>
+        <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-white">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/jack-front.png"
+            alt="Jack"
+            className="h-[70%] w-auto object-contain"
+          />
         </div>
       )}
 
       {!hasError && (
-        <Suspense fallback={null}>
-          <Spline
-            scene="https://prod.spline.design/l8gr6AhxxCqDIdBx/scene.splinecode"
-            onLoad={() => {
-              setIsLoading(false);
-              setHasError(false);
-            }}
-            onError={() => {
-              setIsLoading(false);
-              setHasError(true);
-            }}
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "transparent",
-            }}
-          />
-        </Suspense>
+        <div
+          className="absolute inset-0 h-full w-full"
+          style={{
+            // 하늘색→파랑 쪽 hue, 대비↓·미세 블러로 그라데이션 부드럽게
+            filter:
+              "hue-rotate(72deg) saturate(1.12) brightness(0.94) contrast(0.84) blur(0.55px)",
+          }}
+        >
+          <Suspense fallback={null}>
+            <Spline
+              scene="https://prod.spline.design/l8gr6AhxxCqDIdBx/scene.splinecode"
+              onLoad={() => {
+                setIsLoading(false);
+                setHasError(false);
+              }}
+              onError={() => {
+                setIsLoading(false);
+                setHasError(true);
+              }}
+              style={{
+                width: "118%",
+                height: "108%",
+                marginLeft: "8%",
+                marginTop: "-2%",
+                background: "transparent",
+              }}
+            />
+          </Suspense>
+        </div>
       )}
     </div>
   );

@@ -30,7 +30,7 @@ export default function FinalCta() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="#case-study"
-            className="flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-mono font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgb(29,237,131,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-mono font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgb(26,15,247,0.4)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             사례 다시 보기
             <svg

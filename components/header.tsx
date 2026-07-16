@@ -88,7 +88,7 @@ export default function Header() {
           ))}
           <a
             href="#pipeline"
-            className="bg-primary text-primary-foreground rounded-full px-5 py-2 font-mono text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgb(29,237,131,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="bg-primary text-primary-foreground rounded-full px-5 py-2 font-mono text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgb(26,15,247,0.4)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             계산 흐름 살펴보기
           </a>
