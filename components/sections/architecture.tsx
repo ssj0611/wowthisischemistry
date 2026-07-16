@@ -106,10 +106,10 @@ const GRID_BG = {
 function CornerMarks() {
   return (
     <div aria-hidden="true">
-      {["top-3 left-4", "top-3 right-4", "bottom-3 left-4", "bottom-3 right-4"].map((pos) => (
+      {["top-3 left-3", "top-3 right-3", "bottom-3 left-3", "bottom-3 right-3"].map((pos) => (
         <span
           key={pos}
-          className={`absolute ${pos} font-sans text-2xl font-extralight leading-none text-foreground opacity-40`}
+          className={`absolute ${pos} font-sans text-xl font-extralight leading-none text-foreground opacity-25`}
         >
           +
         </span>
@@ -253,7 +253,7 @@ export default function Architecture() {
 
   if (reduced) {
     return (
-      <section id="pipeline" className="py-0 pb-0">
+      <section id="pipeline" className="scroll-mt-24 py-0">
         {header}
         <div className="mt-3">
           <StageList animate={false} />
@@ -263,8 +263,9 @@ export default function Architecture() {
   }
 
   return (
-    <section id="pipeline" className="py-0">
-      {header}
+    <section id="pipeline" className="scroll-mt-24 py-0">
+      {/* 모바일: 헤더를 위에 고정 표시 */}
+      <div className="md:hidden">{header}</div>
 
       {/* Text-only sequence for desktop screen readers (interactive version shows one description at a time). */}
       <ol className="sr-only max-md:hidden">
@@ -275,14 +276,16 @@ export default function Architecture() {
         ))}
       </ol>
 
-      {/* Desktop: sticky scrollytelling — 높이=콘텐츠만 (빈 여백 없음) */}
-      <div ref={trackRef} className="relative mt-3 hidden h-[110vh] md:block" aria-hidden="false">
-        <div className="sticky top-20 flex flex-col justify-start overflow-hidden px-4 py-0 md:px-6">
+      {/* Desktop: 헤더+단계를 sticky로 묶어 상단 잘림 방지 */}
+      <div ref={trackRef} className="relative hidden h-[110vh] md:block" aria-hidden="false">
+        <div className="sticky top-20 overflow-visible px-4 pt-2 md:px-6">
           <div className="mx-auto w-full max-w-[1100px]">
-            <div className="flex items-stretch">
+            <div className="mb-3 px-0">{header}</div>
+
+            <div className="flex items-stretch overflow-visible">
               {STAGES.map((s, i) => (
                 <Fragment key={s.id}>
-                  {i > 0 && <Connector drawn={active >= i} pulsing={active === i} tone={s.tone} />}
+                  {i > 0 && <Connector drawn={shown >= i} pulsing={shown === i} tone={s.tone} />}
                   <motion.button
                     type="button"
                     onClick={() => setPicked(i)}
@@ -293,17 +296,32 @@ export default function Architecture() {
                     }`}
                     initial={false}
                     animate={{
-                      scale: shown === i ? 1.06 : 1,
-                      opacity: i === active ? 1 : i < active ? 0.55 : 0.4,
+                      scale: shown === i ? 1.03 : 1,
+                      // 선택(shown) 기준: 현재 진하게, 이전·이후는 연하게
+                      opacity: shown === i ? 1 : i < shown ? 0.45 : 0.35,
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <span className="font-mono text-[10px] text-muted-foreground">0{i + 1}</span>
-                    <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${TONE[s.tone].bg}`} />
-                    <span className="break-keep text-center font-mono text-xs leading-tight text-foreground">
+                    <span
+                      className={`font-mono text-[10px] ${
+                        shown === i ? "font-semibold text-foreground" : "text-muted-foreground"
+                      }`}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className={`h-2.5 w-2.5 rounded-full ${TONE[s.tone].bg} ${
+                        shown === i ? "" : "opacity-40"
+                      }`}
+                    />
+                    <span
+                      className={`break-keep text-center font-mono text-xs leading-tight ${
+                        shown === i ? "font-medium text-foreground" : "text-foreground/70"
+                      }`}
+                    >
                       {s.en}
                     </span>
-                    {/* hover / keyboard-focus tooltip */}
                     <span
                       role="tooltip"
                       className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-44 -translate-x-1/2 break-keep rounded-md border border-border bg-background p-2 font-mono text-[11px] leading-snug text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
@@ -315,7 +333,7 @@ export default function Architecture() {
               ))}
             </div>
 
-            <div className="relative mt-2 min-h-32 rounded-xl border border-border bg-card p-4" style={GRID_BG}>
+            <div className="relative mt-2 min-h-32 rounded-xl border border-border bg-card p-4 pl-8" style={GRID_BG}>
               <CornerMarks />
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -326,7 +344,7 @@ export default function Architecture() {
                   transition={{ duration: 0.22 }}
                 >
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 pr-10">
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="font-mono text-xs text-foreground/70">
                       0{shown + 1} / 0{STAGES.length}
                     </span>
                     <h3
