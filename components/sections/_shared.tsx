@@ -118,7 +118,7 @@ export function GridPanel({
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 rounded-4xl border border-solid border-border bg-card px-6 py-14 md:px-12 md:py-20 ${className}`}
+      className={`relative scroll-mt-24 rounded-4xl border border-solid border-border bg-card px-6 py-10 md:px-12 md:py-12 ${className}`}
       style={{
         backgroundImage: `
           linear-gradient(var(--border) 1px, transparent 1px),

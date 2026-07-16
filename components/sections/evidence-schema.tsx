@@ -40,7 +40,7 @@ export default function EvidenceSchema() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="evidence" className="py-24">
+    <section id="evidence" className="py-12">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
         <p className="font-mono text-xs tracking-[0.3em] text-accent">Evidence 스키마</p>
         <h2

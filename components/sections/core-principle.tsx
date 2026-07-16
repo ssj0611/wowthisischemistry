@@ -31,7 +31,7 @@ function Arrow() {
 
 export default function CorePrinciple() {
   return (
-    <section id="principle" className="scroll-mt-24 py-20 md:py-28">
+    <section id="principle" className="scroll-mt-24 py-12 md:py-14">
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-14 text-center">
           <p className="text-accent mb-4 font-mono text-xs tracking-[0.25em]">

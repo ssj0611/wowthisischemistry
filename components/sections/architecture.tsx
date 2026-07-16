@@ -253,9 +253,9 @@ export default function Architecture() {
 
   if (reduced) {
     return (
-      <section id="pipeline" className="py-24">
+      <section id="pipeline" className="py-6">
         {header}
-        <div className="mt-12">
+        <div className="mt-6">
           <StageList animate={false} />
         </div>
       </section>
@@ -263,7 +263,7 @@ export default function Architecture() {
   }
 
   return (
-    <section id="pipeline" className="py-24">
+    <section id="pipeline" className="py-6">
       {header}
 
       {/* Text-only sequence for desktop screen readers (interactive version shows one description at a time). */}
@@ -276,8 +276,8 @@ export default function Architecture() {
       </ol>
 
       {/* Desktop: sticky scrollytelling */}
-      <div ref={trackRef} className="relative hidden h-[350vh] md:block" aria-hidden="false">
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-6">
+      <div ref={trackRef} className="relative mt-6 hidden h-[150vh] md:block" aria-hidden="false">
+        <div className="sticky top-16 flex h-[70vh] flex-col justify-center overflow-hidden px-6">
           <div className="mx-auto w-full max-w-[1100px]">
             <div className="flex items-stretch">
               {STAGES.map((s, i) => (
@@ -288,7 +288,7 @@ export default function Architecture() {
                     onClick={() => setPicked(i)}
                     aria-label={`${i + 1}단계 ${s.en}: ${s.role}`}
                     aria-pressed={shown === i}
-                    className={`group relative flex w-[7.5rem] flex-col items-center gap-2 rounded-lg border bg-card px-2 py-4 outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-ring ${
+                    className={`group relative flex w-[7.5rem] flex-col items-center gap-2 rounded-lg border bg-card px-2 py-3 outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-ring ${
                       shown === i ? `${TONE[s.tone].border} ${TONE[s.tone].glow}` : "border-border"
                     }`}
                     initial={false}
@@ -315,7 +315,7 @@ export default function Architecture() {
               ))}
             </div>
 
-            <div className="relative mt-10 min-h-40 rounded-xl border border-border bg-card p-6" style={GRID_BG}>
+            <div className="relative mt-5 min-h-36 rounded-xl border border-border bg-card p-5" style={GRID_BG}>
               <CornerMarks />
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -347,7 +347,7 @@ export default function Architecture() {
               </AnimatePresence>
             </div>
 
-            <p className="mt-4 text-center font-mono text-[11px] text-muted-foreground">
+            <p className="mt-3 text-center font-mono text-[11px] text-muted-foreground">
               스크롤하면 단계가 진행됩니다
             </p>
           </div>
@@ -355,7 +355,7 @@ export default function Architecture() {
       </div>
 
       {/* Mobile: plain vertical pipeline, no scroll-trapping */}
-      <div className="mt-12 md:hidden">
+      <div className="mt-6 md:hidden">
         <StageList animate />
       </div>
     </section>
