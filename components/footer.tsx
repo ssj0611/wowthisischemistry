@@ -9,6 +9,9 @@ const NAV = [
   { href: "#limitations", label: "한계" },
 ];
 
+// GitHub Pages basePath 대응 (로컬은 "")
+const UFO_SRC = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/jack-footer-ufo.png`;
+
 export default function Footer() {
   return (
     <footer className="w-full px-6 relative py-[0] mt-28 h-auto mb-0 bg-card">
@@ -55,7 +58,7 @@ export default function Footer() {
           <div className="hidden md:flex flex-1 justify-end items-center relative">
             <div className="relative">
               <Image
-                src="/jack-footer-ufo.png"
+                src={UFO_SRC}
                 alt="Jack in UFO"
                 width={400}
                 height={300}
@@ -69,7 +72,7 @@ export default function Footer() {
         <div className="md:hidden flex justify-center mt-12">
           <div className="relative">
             <Image
-              src="/jack-footer-ufo.png"
+              src={UFO_SRC}
               alt="Jack in UFO"
               width={500}
               height={375}

@@ -276,98 +276,113 @@ export default function Architecture() {
         ))}
       </ol>
 
-      {/* Desktop: 헤더+단계를 sticky로 묶어 상단 잘림 방지 */}
-      <div ref={trackRef} className="relative hidden h-[110vh] md:block" aria-hidden="false">
-        <div className="sticky top-20 overflow-visible px-4 pt-2 md:px-6">
-          <div className="mx-auto w-full max-w-[1100px]">
-            <div className="mb-3 px-0">{header}</div>
+      {/* Desktop: sticky scrollytelling — 하단 mid peek로 다음 섹션 암시, 트랙 끝나야 진입 */}
+      <div ref={trackRef} className="relative hidden h-[120vh] md:block" aria-hidden="false">
+        <div className="sticky top-20 z-10 flex h-[calc(100vh-5rem)] flex-col bg-background px-4 pt-2 md:px-6">
+          <div className="mx-auto flex min-h-0 w-full max-w-[1100px] flex-1 flex-col">
+            <div className="min-h-0 flex-1 overflow-y-auto pb-2">
+              <div className="mb-3 px-0">{header}</div>
 
-            <div className="flex items-stretch overflow-visible">
-              {STAGES.map((s, i) => (
-                <Fragment key={s.id}>
-                  {i > 0 && <Connector drawn={shown >= i} pulsing={shown === i} tone={s.tone} />}
-                  <motion.button
-                    type="button"
-                    onClick={() => setPicked(i)}
-                    aria-label={`${i + 1}단계 ${s.en}: ${s.role}`}
-                    aria-pressed={shown === i}
-                    className={`group relative flex w-[7.5rem] flex-col items-center gap-1.5 rounded-lg border bg-card px-2 py-2.5 outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-ring ${
-                      shown === i ? `${TONE[s.tone].border} ${TONE[s.tone].glow}` : "border-border"
-                    }`}
-                    initial={false}
-                    animate={{
-                      scale: shown === i ? 1.03 : 1,
-                      // 선택(shown) 기준: 현재 진하게, 이전·이후는 연하게
-                      opacity: shown === i ? 1 : i < shown ? 0.45 : 0.35,
-                    }}
-                    transition={{ duration: 0.3 }}
+              <div className="flex items-stretch overflow-visible">
+                {STAGES.map((s, i) => (
+                  <Fragment key={s.id}>
+                    {i > 0 && <Connector drawn={shown >= i} pulsing={shown === i} tone={s.tone} />}
+                    <motion.button
+                      type="button"
+                      onClick={() => setPicked(i)}
+                      aria-label={`${i + 1}단계 ${s.en}: ${s.role}`}
+                      aria-pressed={shown === i}
+                      className={`group relative flex w-[7.5rem] flex-col items-center gap-1.5 rounded-lg border bg-card px-2 py-2.5 outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-ring ${
+                        shown === i ? `${TONE[s.tone].border} ${TONE[s.tone].glow}` : "border-border"
+                      }`}
+                      initial={false}
+                      animate={{
+                        scale: shown === i ? 1.03 : 1,
+                        opacity: shown === i ? 1 : i < shown ? 0.45 : 0.35,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span
+                        className={`font-mono text-[10px] ${
+                          shown === i ? "font-semibold text-foreground" : "text-muted-foreground"
+                        }`}
+                      >
+                        0{i + 1}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className={`h-2.5 w-2.5 rounded-full ${TONE[s.tone].bg} ${
+                          shown === i ? "" : "opacity-40"
+                        }`}
+                      />
+                      <span
+                        className={`break-keep text-center font-mono text-xs leading-tight ${
+                          shown === i ? "font-medium text-foreground" : "text-foreground/70"
+                        }`}
+                      >
+                        {s.en}
+                      </span>
+                      <span
+                        role="tooltip"
+                        className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-44 -translate-x-1/2 break-keep rounded-md border border-border bg-background p-2 font-mono text-[11px] leading-snug text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+                      >
+                        {s.role}
+                      </span>
+                    </motion.button>
+                  </Fragment>
+                ))}
+              </div>
+
+              <div className="relative mt-2 min-h-32 rounded-xl border border-border bg-card p-4 pl-8" style={GRID_BG}>
+                <CornerMarks />
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={shown}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.22 }}
                   >
-                    <span
-                      className={`font-mono text-[10px] ${
-                        shown === i ? "font-semibold text-foreground" : "text-muted-foreground"
-                      }`}
-                    >
-                      0{i + 1}
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className={`h-2.5 w-2.5 rounded-full ${TONE[s.tone].bg} ${
-                        shown === i ? "" : "opacity-40"
-                      }`}
-                    />
-                    <span
-                      className={`break-keep text-center font-mono text-xs leading-tight ${
-                        shown === i ? "font-medium text-foreground" : "text-foreground/70"
-                      }`}
-                    >
-                      {s.en}
-                    </span>
-                    <span
-                      role="tooltip"
-                      className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-44 -translate-x-1/2 break-keep rounded-md border border-border bg-background p-2 font-mono text-[11px] leading-snug text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
-                    >
-                      {s.role}
-                    </span>
-                  </motion.button>
-                </Fragment>
-              ))}
+                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 pr-10">
+                      <span className="font-mono text-xs text-foreground/70">
+                        0{shown + 1} / 0{STAGES.length}
+                      </span>
+                      <h3
+                        className="text-lg font-semibold text-foreground"
+                        style={{ fontFamily: "var(--font-montserrat)" }}
+                      >
+                        {stage.en}
+                      </h3>
+                      <span className={`font-mono text-xs ${TONE[stage.tone].text}`}>{stage.role}</span>
+                    </div>
+                    <p className="mt-2 max-w-3xl break-keep font-mono text-sm leading-relaxed text-muted-foreground">
+                      {stage.desc}
+                    </p>
+                    <div className="mt-3">
+                      <Chips chips={stage.chips} tone={stage.tone} />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <p className="mt-2 text-center font-mono text-[11px] text-muted-foreground">
+                스크롤하면 단계가 진행됩니다
+              </p>
             </div>
 
-            <div className="relative mt-2 min-h-32 rounded-xl border border-border bg-card p-4 pl-8" style={GRID_BG}>
-              <CornerMarks />
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={shown}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.22 }}
-                >
-                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 pr-10">
-                    <span className="font-mono text-xs text-foreground/70">
-                      0{shown + 1} / 0{STAGES.length}
-                    </span>
-                    <h3
-                      className="text-lg font-semibold text-foreground"
-                      style={{ fontFamily: "var(--font-montserrat)" }}
-                    >
-                      {stage.en}
-                    </h3>
-                    <span className={`font-mono text-xs ${TONE[stage.tone].text}`}>{stage.role}</span>
-                  </div>
-                  <p className="mt-2 max-w-3xl break-keep font-mono text-sm leading-relaxed text-muted-foreground">
-                    {stage.desc}
-                  </p>
-                  <div className="mt-3">
-                    <Chips chips={stage.chips} tone={stage.tone} />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+            {/* 다음 섹션 제목 peek — 6단계 스크롤 중에만 하단 고정 노출 */}
+            <div
+              aria-hidden
+              className="shrink-0 border-t border-border/70 bg-background pt-2 pb-1"
+            >
+              <p className="font-mono text-[10px] tracking-[0.3em] text-accent/80">다음 · 로그 → JSON</p>
+              <p
+                className="truncate text-lg font-semibold text-foreground/45 md:text-xl"
+                style={{ fontFamily: "var(--font-montserrat)" }}
+              >
+                원시 로그에서 Evidence JSON으로
+              </p>
             </div>
-
-            <p className="mt-2 text-center font-mono text-[11px] text-muted-foreground">
-              스크롤하면 단계가 진행됩니다
-            </p>
           </div>
         </div>
       </div>
