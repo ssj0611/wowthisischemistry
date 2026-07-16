@@ -2,6 +2,18 @@
 
 import { Suspense, useState } from "react";
 import Spline from "@splinetool/react-spline";
+import type { Application } from "@splinetool/runtime";
+import jackFront from "@/public/jack-front.png";
+
+/** Spline free-tier "Built with Spline" badge lives on the canvas UI overlay. */
+function hideSplineWatermark(app: Application) {
+  const pipeline = (
+    app as unknown as {
+      _renderer?: { pipeline?: { disableUIOverlay?: () => void } };
+    }
+  )._renderer?.pipeline;
+  pipeline?.disableUIOverlay?.();
+}
 
 export default function SplineScene() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +34,7 @@ export default function SplineScene() {
         <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-white">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/jack-front.png"
+            src={jackFront.src}
             alt="Jack"
             className="h-[70%] w-auto object-contain"
           />
@@ -31,7 +43,7 @@ export default function SplineScene() {
 
       {!hasError && (
         <div
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 h-full w-full [&_a]:!hidden"
           style={{
             // 하늘색→파랑 쪽 hue, 대비↓·미세 블러로 그라데이션 부드럽게
             filter:
@@ -41,7 +53,8 @@ export default function SplineScene() {
           <Suspense fallback={null}>
             <Spline
               scene="https://prod.spline.design/l8gr6AhxxCqDIdBx/scene.splinecode"
-              onLoad={() => {
+              onLoad={(app) => {
+                hideSplineWatermark(app);
                 setIsLoading(false);
                 setHasError(false);
               }}

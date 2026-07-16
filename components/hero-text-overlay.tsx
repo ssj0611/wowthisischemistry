@@ -41,11 +41,11 @@ export default function HeroTextOverlay() {
       <motion.div variants={item} className="relative mb-3.5 inline-block" aria-hidden>
         {/* 외곽선 레이어 — stroke만으로 E/N이 깨져 보여서, 위 채움 레이어로 안쪽을 덮음 */}
         <span
-          className="absolute inset-0 text-4xl font-bold tracking-wide md:text-6xl lg:text-7xl"
+          className="absolute inset-0 text-4xl font-bold tracking-wide [--sj-stroke:2px] md:text-6xl md:[--sj-stroke:5px] lg:text-7xl lg:[--sj-stroke:6px]"
           style={{
             fontFamily: "var(--font-montserrat)",
             color: "#111111",
-            WebkitTextStroke: "6px #111111",
+            WebkitTextStroke: "var(--sj-stroke) #111111",
           }}
         >
           SEOJIN

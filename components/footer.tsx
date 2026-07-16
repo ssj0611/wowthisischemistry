@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ufo from "@/public/jack-footer-ufo.png";
 
 const NAV = [
   { href: "#mcp", label: "MCP 도구" },
@@ -8,9 +9,6 @@ const NAV = [
   { href: "#report", label: "보고서" },
   { href: "#limitations", label: "한계" },
 ];
-
-// GitHub Pages basePath 대응 (로컬은 "")
-const UFO_SRC = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/jack-footer-ufo.png`;
 
 export default function Footer() {
   return (
@@ -58,7 +56,7 @@ export default function Footer() {
           <div className="hidden md:flex flex-1 justify-end items-center relative">
             <div className="relative">
               <Image
-                src={UFO_SRC}
+                src={ufo}
                 alt="Jack in UFO"
                 width={400}
                 height={300}
@@ -72,7 +70,7 @@ export default function Footer() {
         <div className="md:hidden flex justify-center mt-12">
           <div className="relative">
             <Image
-              src={UFO_SRC}
+              src={ufo}
               alt="Jack in UFO"
               width={500}
               height={375}
